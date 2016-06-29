@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+<div class="jumbotron">
+    <a style="cursor:pointer;" href="~/Home/BookService">
+        <img class="SlideShow" src="~/Resources/Images/banner2.jpg" @*style="display:block ">*@>
+        <img class="SlideShow" src="~/Resources/Images/banner1.jpg">
+        <img class="SlideShow" src="~/Resources/Images/banner3.jpg">
+    </a>
+    <a class="w3-btn-floating" style="top:45%;left:0" onclick="plusDivs(-1)">❮</a>
+    <a class="w3-btn-floating" style="top:45%;right:0" onclick="plusDivs(1)">❯</a>
+</div>
+<div id="ServicesRow" style="text-align:center;margin-bottom:20px">
+    <a style="cursor:pointer;" href="~/Home/Services">
+        <img src="~/Resources/Images/Services.jpg" style="width:200px;height:60px;" class="box-shadow">
+    </a> 
+       
+</div>
+<div class="row">
+    <div class="col-md-4 col-md-4-border">
+            <h2>Home Delivery</h2>
+        <p>
+            <img src="~/Resources/Images/Shopping.gif" style="width:250px;height:250px">
+            @*ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and gives you full control over markup
+                for enjoyable, agile development.*@
+        </p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4 col-md-4-border" style="float:right;">
+        <h2>Errands</h2>
+        <p>
+            <img src="~/Resources/Images/Tasks.gif" style="width:250px;height:250px;">
+        </p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    @*<div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>*@
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        var slideIndex = 1;
+        $(document).ready(function () {
+             slideIndex = 1;
+             carousel();
+        });
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("SlideShow");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > x.length) { slideIndex = 1 }
+            x[slideIndex - 1].style.display = "block";
+            setTimeout(carousel, 4000); // Change image every 2 seconds
+        }
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("SlideShow");
+            if (n > x.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = x.length }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex - 1].style.display = "block";
+        }
+    </script>
+}
